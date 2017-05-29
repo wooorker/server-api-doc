@@ -3,8 +3,6 @@ go:
 - '1.0'
 before_install:
 - openssl aes-256-cbc -K $encrypted_9828b90b0055_key -iv $encrypted_9828b90b0055_iv
-  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
-- openssl aes-256-cbc -K $encrypted_fee1ab4be628_key -iv $encrypted_fee1ab4be628_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "Host 119.29.240.215\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
