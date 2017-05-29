@@ -1,0 +1,62 @@
+FORMAT: 1A
+HOST: http://api-doc.smartwork.mobi/
+
+# SMARTWORK API DOCUMENTS
+
+### Version 1.0
+
+接口签名规则：
+
+```
+```
+
+**语法说明**
+
+- “# Group 组名称”: 声明的是一个分组
+- “## 接口名称”: 声明一个接口
+- “### 接口名称　[http method]”: restful风格,声明不同http method下的接口信息
+- “+ Parameters”: 声明请求参数
+- “+ Response 200 (application/json)”: 声明响应结果
+
+# User模块
+演示默认模块demo的默认控制器Index的三个接口hello,get,micro。
+
+## 登陆接口 [/v1/user/login]
+这里定义接口的描述信息
+
+### 接口 [GET]
+描述信息
+
++ Parameters
+
++ Response 200 (application/json)
+
+    ```
+    {
+        "code":200,
+        "message":"OK",
+        "result":"Hello Smartwork"
+    }
+    ```
+
+## userinfo接口 [/v1/userInfo/get]
+这里定义接口的描述信息
+
+### userinfo接口 [GET]
+描述信息
+
++ Parameters
+    + username: `test` (sting) - 用户名
+    + password: `test` (sting) - 密码
+
++ Response 200 (application/json)
+
+    ```
+    {
+        "code":200,
+        "message":"OK",
+        "result":{
+            "username":"default value"
+        }
+    }
+    ```
