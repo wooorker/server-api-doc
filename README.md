@@ -11,13 +11,13 @@
 ### How to use?
 
 ```
-snowboard html -i index.apib -o index.html -s
+cd ./apib && ./snowboard html -i ./v1/index.apib -o ./v1/index.html -s
 
 open website: localhost:8088
 ```
 
 ```
-snowboard mock -i index.apib
+./snowboard mock -i ./v1/index.apib 
 
 open website: localhost:8087
 ```
