@@ -1,0 +1,33 @@
+# Group Account Server
+
+# User [/user]
+Create user, update user info, etc.
+
+## Create Email User [POST /user/create/{email}/{password}]
++ Parameters
+    + email: `you@example.com`(string , required) - email of user
+    + password: `*******`(string, required) - password of user
+      （must be include number[0-9] and char[A-Za-z], the length is more than 8）
+
++ Response 200 (application/json)
+    + Attributes
+        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - session id of user
+        + message:`ok` (string) - response message
+
+## Create Social User [POST /user/create/{social_id}/{social_type}/{email}/{password}]
++ Parameters
+    + social_id: `optm92nakns1nknklin1m=`(string , required) - id of social account
+    + social_type: `facebook`(enum[string], required) - type of social account
+      + Members
+        + `facebook`
+        + `google`
+    + email: `you@example.com`(string , optional) - email of user
+    + password: `********`(string, required) - password of user
+      （must be include number[0-9] and char[A-Za-z], the length is more than 8）
+
++ Response 200 (application/json)
+    + Attributes
+        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - session id of user
+        + message:`ok` (string) - response message
+
+## Update User [POST /user/create/{email}/{password}]

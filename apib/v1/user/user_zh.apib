@@ -1,0 +1,34 @@
+# Group 账号服务
+
+# 账号 [/user]
+创建不同类型账号，更新账号密码
+
+## 创建邮箱账号 [POST /user/create/{email}/{password}]
++ Parameters
+    + email: `you@example.com`(string , required) - 账号邮件
+      （将作为账号唯一的标识）
+    + password: `*******`(string, required) - 账号密码
+      （必须包含数字[0-9]和字母[A-Za-z]，长度大于等于8位）
+
++ Response 200 (application/json)
+    + Attributes
+        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - 账号会话token
+        + message:`ok` (string) - 响应消息
+
+## 创建社交账号 [POST /user/create/{social_id}/{social_type}/{email}/{password}]
++ Parameters
+    + social_id: `optm92nakns1nknklin1m=`(string , required) - id of social account
+    + social_type: `facebook`(enum[string], required) - type of social account
+      + Members
+        + `facebook`
+        + `google`
+    + email: `you@example.com`(string , optional) - email of user
+    + password: `********`(string, required) - password of user
+      （must be include number[0-9] and char[A-Za-z], the length is more than 8）
+
++ Response 200 (application/json)
+    + Attributes
+        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - session id of user
+        + message:`ok` (string) - response message
+
+## 更新用户账号 [POST /user/create/{email}/{password}]

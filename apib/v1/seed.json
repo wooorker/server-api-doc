@@ -1,0 +1,6 @@
+{
+  "language":"zh",
+  "environment": "dev",
+  "host":"http://api.smartwork.mobi/",
+  "version":"v1.0"
+}
