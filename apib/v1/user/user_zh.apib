@@ -3,7 +3,8 @@
 # 账号 [/user]
 创建不同类型账号，更新账号密码
 
-## 创建邮箱账号 [POST /user/create/{email}/{password}]
+## 创建邮箱账号 [POST /user/create]
++ Request New Email Account
 + Parameters
     + email: `you@example.com`(string , required) - 账号邮件
       （将作为账号唯一的标识）
@@ -15,20 +16,86 @@
         + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - 账号会话token
         + message:`ok` (string) - 响应消息
 
-## 创建社交账号 [POST /user/create/{social_id}/{social_type}/{email}/{password}]
+## 创建社交账号 [POST /user/create]
++ Request New Social Account
 + Parameters
-    + social_id: `optm92nakns1nknklin1m=`(string , required) - id of social account
-    + social_type: `facebook`(enum[string], required) - type of social account
+    + social_id: `optm92nakns1nknklin1m=`(string , required) - 社交账号ID
+      （来着社交账号唯一的open_id）
+    + social_type: `facebook`(enum[string], required) - 社交账号类型
+      （国内支持微信、QQ、微博，国外支持Google、Facebook、Twitter）
       + Members
         + `facebook`
         + `google`
-    + email: `you@example.com`(string , optional) - email of user
-    + password: `********`(string, required) - password of user
-      （must be include number[0-9] and char[A-Za-z], the length is more than 8）
+        + `twitter`
 
 + Response 200 (application/json)
     + Attributes
-        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - session id of user
-        + message:`ok` (string) - response message
+        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - 账号会话token
+        + message:`ok` (string) - 响应消息
 
-## 更新用户账号 [POST /user/create/{email}/{password}]
+## 更新用户信息 [PUT /user/update]
++ Request Update Account Info
++ Parameters
+    + id: `100338`(string , required) - 账号ID
+      （由唯一的id）
+    + username: `wanger`(string, optional) - 用户名
+    + email: `you@example.com`(string, optional) - 邮箱
+    + password: `*******`(string, optional) - 密码
+    + avatar: `https://picture.smartdo.io/avatar/98381623`(string, optional) - 头像
+
++ Response 200 (application/json)
+    + Attributes
+        + message:`ok` (string) - 响应消息
+
+## 升级为高级用户 [PUT /user/upgrade]
++ Request Upgrade Account to Pro
++ Parameters
+    + id: `100338`(string , required) - 账号ID
+      （由唯一的id）
+    + trade_flow_id: `192847199` (string, required) - 支付流水号
++ Response 200 (application/json)
+    + Attributes
+        + message:`ok` (string) - 响应消息
+
+# 账号状态 [/userstatus]
+## 登录 [POST /userstatus]
++ Request Record Account login
++ Parameters
+    + cmd: `login`(string, required) - 客户端指令
+    + args: `{"u_id":"100338"}`(string, optional) - 指令参数
+      （格式为JSON）
+    + client_ret: `ok`(string, optional) - 客户端指令执行结果
+
++ Response 200 (application/json)
+    + Attributes
+        + message:`ok` (string) - 响应消息
+## 注销 [POST /userstatus]
++ Request Record Account logout
++ Parameters
+    + cmd: `logout`(string, required) - 客户端指令
+    + args: `{"u_id":"100338"}`(string, optional) - 指令参数
+      （格式为JSON）
+    + client_ret: `ok`(string, optional) - 客户端指令执行结果
++ Response 200 (application/json)
+    + Attributes
+        + message:`ok` (string) - 响应消息
+## 在线 [POST /userstatus]
++ Request Record Account/Device online
++ Parameters
+    + cmd: `online`(string, required) - 客户端指令
+    + args: `{"u_id":"100338","d_id":"28467818"}`(string, optional) - 指令参数
+      （格式为JSON）
+    + client_ret: `ok`(string, optional) - 客户端指令执行结果
++ Response 200 (application/json)
+    + Attributes
+        + message:`ok` (string) - 响应消息
+## 离线 [POST /userstatus]
++ Request Record Account/Device offline
++ Parameters
+    + cmd: `offline`(string, required) - 客户端指令
+    + args: `{"u_id":"100338","d_id":"28467818"}`(string, optional) - 指令参数
+      （格式为JSON）
+    + client_ret: `ok`(string, optional) - 客户端指令执行结果
++ Response 200 (application/json)
+    + Attributes
+        + message:`ok` (string) - 响应消息
