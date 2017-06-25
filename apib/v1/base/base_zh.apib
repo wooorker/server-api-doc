@@ -1,4 +1,4 @@
-
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 ## 关于
 该适用SmartWork V1.0版本的android、ios客户端使用
 
@@ -10,11 +10,10 @@
 ## 环境·当前{{.host}}
 修改接口调用环境
 
-[开发-HOST](http://api.smartwork.mobi/) | [线上-HOST](http://api.smartwork.mobi/)
+[开发-HOST](http://api.smartwork.mobi/) | [线上-HOST](http://api.smartdo.io/)
 
 ## 公共参数
 调用API时，必须传入系统级参数和对应的应用级参数。各个API的输入参数和返回结果详见API文档
-
 <p class="text-center">
     <div class="table-responsive">
       <table class="table table-bordered">
@@ -53,59 +52,10 @@
 </p>
 
 ## 接口鉴权
-1. 调用API时需要对所有请求参数进行签名（除签名和图片）
+1. 调用API时需要对除GET外所有请求参数进行签名（除签名和图片）
 2. 签名方式为 md5(sha1(value .... + value+app_secret))，其中value对是除签名所有请求参数按key做的升序排列，value无需编码
 
-**以接口用户注册接口为例:**
-```
-    php签名示例：
-      密钥对(假定)
-      $app_key    = "259eea423dee18c7";
-      $app_secret = "b865b0777cd657cc";
-      1.待签名参数数组
-      例，
-      $query = array(
-           "app_key"   => "259eea423dee18c7",
-           "sign"      => "6f599d6bbc959ff24e33e91d223b28ed",
-           "timestamp" => "1444465508",
-           "password"  => "oj222fb2w27d828af22f592134e8932480637c0",
-           "email"     => "tigerbcode@gmail.com",
-           "did"       => "1111111"
-         );
-      2.按照数组键名进行升序排序
-      ksort($query);
-      例，
-      $query = array{
-            "app_key"   =>  "259eea423dee18c7",
-            "email"     =>  "tigerbcode@gmail.com",
-            "password"  =>  "oj222fb2w27d828af22f592134e8932480637c0",
-            "sign"      =>  "6f599d6bbc959ff24e33e91d223b28ed",
-            "timestamp" =>  "1444465508",
-            "did"       =>  "1111111"
-      }
-      3.将数组Value部分合并为字符串
-      $query  = implode('', $query);
-      例，
-      259eea423dee18c7tigerbcode@gmail.comoj222fb2w27d828af22f592134e8932480637c06f599d6bbc95
-      9ff24e33e91d223b28ed14444655081111111
-      4.追加秘钥
-      $query .= $app_secret;
-      例，
-      259eea423dee18c7tigerbcode@gmail.comoj222fb2w27d828af22f592134e8932480637c06f599d6bbc95
-      9ff24e33e91d223b28ed14444655081111111b865b0777cd657cc
-      5.SHA1加密
-      $sha1 = sha1($query);
-      例，778c0aea291f67ee37835dd22df61d02f0c5fe43
-      6.MD5加密（32位的小写字符串）
-      $sign = md5($sha1);
-      例，a4b9aed8f658bf7890bce3d4b6b21f33
-```
 
-**API调用URL示例**
-
-```
-http://domain/v1/user?app_key=259eea423dee18c7&sign=a4b9aed8f658bf7890bce3d4b6b21f33&timestamp=1444465508&email=tigerbcode@gmail.com&password=oj222fb2w27d828af22f592134e8932480637c0&did=1111111
-```
 ## 接口响应
 
 **正常**
@@ -139,7 +89,7 @@ http://domain/v1/user?app_key=259eea423dee18c7&sign=a4b9aed8f658bf7890bce3d4b6b2
   2. 支持等幂性
 
 ## 注意事项
-1. 所有的请求和响应数据编码皆为utf-8格式，为restful请求，url里的所有参数值请做urlencode编码（图片除外）
+1. 所有的请求和响应数据编码皆为utf-8格式，为restful请求，请求数据格式(除开GET请求)为json格式
 2. 含有上传图片的请求一律使用post请求，Content-Type为multipart/form-data
 3. 返回结果是json格式
 4. 调试模式（传参debug=true，测试环境有效）：签名异常返回签名信息
