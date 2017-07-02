@@ -1,36 +1,8 @@
 # Group 账号服务
 
-# 账号 [/user]
-创建不同类型账号，更新账号密码
+# 社交账号 [/social]
 
-## 创建邮箱账号 [POST /v1/user]
-+ Request New Email Account
-+ Parameters
-    + email: `you@example.com`(string , required) - 账号邮件
-      （将作为账号唯一的标识）
-    + password: `*******`(string, required) - 账号密码
-      （必须包含数字[0-9]和字母[A-Za-z]，长度大于等于8位）
-
-+ Response 200 (application/json)
-    + Attributes
-        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - 账号会话token
-
-## 登录账号 [GET /v1/user]
-+ Account Login
-+ Parameters
-    + email: `you@example.com`(string , required) - 账号邮件
-      （将作为账号唯一的标识）
-    + password: `*******`(string, required) - 账号密码
-      （必须包含数字[0-9]和字母[A-Za-z]，长度大于等于8位）
-
-+ Response 200 (application/json)
-    + Attributes
-        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - 账号会话token
-        + nickname:`yoyoyo` (string) - 昵称
-        + avatar:`http://pic.smartdo.io/img/avatar.webp` (string) - 头像
-
-## 创建社交账号 [POST /user/create]
-+ Request New Social Account
+## 登录社交账号 [POST /social]
 + Parameters
     + social_id: `optm92nakns1nknklin1m=`(string , required) - 社交账号ID
       （来着社交账号唯一的open_id）
@@ -44,71 +16,47 @@
 + Response 200 (application/json)
     + Attributes
         + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - 账号会话token
-        + message:`ok` (string) - 响应消息
+        + nickname:`yoyoyo` (string) - 昵称
+        + avatar:`http://pic.smartdo.io/img/avatar.webp` (string) - 头像
+        + role:`vip` - 账号类型
 
-## 更新用户信息 [PUT /user/update]
-+ Request Update Account Info
+# 账号 [/user]
+
+## 获得账号信息 [GET /user] 
 + Parameters
-    + id: `100338`(string , required) - 账号ID
-      （由唯一的id）
+    + s_token: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 账号会话token
++ Response 200 (application/json)
+    + Attributes
+        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - 账号会话token
+        + nickname:`yoyoyo` (string) - 昵称
+        + avatar:`http://pic.smartdo.io/img/avatar.webp` (string) - 头像
+        + role:`vip` - 账号类型
+        + email:`you@example.com` - 邮箱
+        + device:`{...}` - 设备信息
+        + social:`{...}` - 社交账号信息
+
+## 登录账号 [POST /user]
++ Parameters
+    + email: `you@example.com`(string , required) - 账号邮件
+      （将作为账号唯一的标识）
+    + password: `*******`(string, required) - 账号密码
+      （必须包含数字[0-9]和字母[A-Za-z]，长度大于等于8位）
+
++ Response 200 (application/json)
+    + Attributes
+        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - 账号会话token
+        + nickname:`yoyoyo` (string) - 昵称
+        + avatar:`http://pic.smartdo.io/img/avatar.webp` (string) - 头像
+        + role:`vip` - 账号类型
+
+## 更新用户 [PUT /user]
++ Parameters
+    + s_token: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 账号会话token
     + username: `wanger`(string, optional) - 用户名
     + email: `you@example.com`(string, optional) - 邮箱
     + password: `*******`(string, optional) - 密码
     + avatar: `https://picture.smartdo.io/avatar/98381623`(string, optional) - 头像
 
-+ Response 200 (application/json)
-    + Attributes
-        + message:`ok` (string) - 响应消息
-
-## 升级为高级用户 [PUT /user/upgrade]
-+ Request Upgrade Account to Pro
-+ Parameters
-    + id: `100338`(string , required) - 账号ID
-      （由唯一的id）
-    + trade_flow_id: `192847199` (string, required) - 支付流水号
-+ Response 200 (application/json)
-    + Attributes
-        + message:`ok` (string) - 响应消息
-
-# 账号状态 [/userstatus]
-## 登录 [POST /userstatus]
-+ Request Record Account login
-+ Parameters
-    + cmd: `login`(string, required) - 客户端指令
-    + args: `{"u_id":"100338"}`(string, optional) - 指令参数
-      （格式为JSON）
-    + client_ret: `ok`(string, optional) - 客户端指令执行结果
-
-+ Response 200 (application/json)
-    + Attributes
-        + message:`ok` (string) - 响应消息
-## 注销 [POST /userstatus]
-+ Request Record Account logout
-+ Parameters
-    + cmd: `logout`(string, required) - 客户端指令
-    + args: `{"u_id":"100338"}`(string, optional) - 指令参数
-      （格式为JSON）
-    + client_ret: `ok`(string, optional) - 客户端指令执行结果
-+ Response 200 (application/json)
-    + Attributes
-        + message:`ok` (string) - 响应消息
-## 在线 [POST /userstatus]
-+ Request Record Account/Device online
-+ Parameters
-    + cmd: `online`(string, required) - 客户端指令
-    + args: `{"u_id":"100338","d_id":"28467818"}`(string, optional) - 指令参数
-      （格式为JSON）
-    + client_ret: `ok`(string, optional) - 客户端指令执行结果
-+ Response 200 (application/json)
-    + Attributes
-        + message:`ok` (string) - 响应消息
-## 离线 [POST /userstatus]
-+ Request Record Account/Device offline
-+ Parameters
-    + cmd: `offline`(string, required) - 客户端指令
-    + args: `{"u_id":"100338","d_id":"28467818"}`(string, optional) - 指令参数
-      （格式为JSON）
-    + client_ret: `ok`(string, optional) - 客户端指令执行结果
 + Response 200 (application/json)
     + Attributes
         + message:`ok` (string) - 响应消息

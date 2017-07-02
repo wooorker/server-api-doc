@@ -1,6 +1,7 @@
 {
-  "language":"zh",
-  "environment": "dev",
-  "host":"http://api.smartwork.mobi/",
-  "version":"v1.0"
+	"language": "zh",
+	"environment": "dev",
+	"dev_host": "http://test.api.smartdo.io",
+	"online_host": "http://api.smartdo.io",
+	"version": "v1.0"
 }

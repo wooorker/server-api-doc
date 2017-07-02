@@ -1,0 +1,21 @@
+# 状态 [/behavior]
+## 在线 [POST /behavior/user]
++ Request Record Account/Device online
++ Parameters
+    + cmd: `online`(string, required) - 客户端指令
+    + args: `{"u_id":"100338","d_id":"28467818"}`(string, optional) - 指令参数
+      （格式为JSON）
+    + client_ret: `ok`(string, optional) - 客户端指令执行结果
++ Response 200 (application/json)
+    + Attributes
+        + message:`ok` (string) - 响应消息
+## 离开 [POST /behavior/user]
++ Request Record Account/Device offline
++ Parameters
+    + cmd: `offline`(string, required) - 客户端指令
+    + args: `{"u_id":"100338","d_id":"28467818"}`(string, optional) - 指令参数
+      （格式为JSON）
+    + client_ret: `ok`(string, optional) - 客户端指令执行结果
++ Response 200 (application/json)
+    + Attributes
+        + message:`ok` (string) - 响应消息
