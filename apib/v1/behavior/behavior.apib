@@ -1,21 +1,28 @@
+# Group 行为管理
 # 状态 [/behavior]
-## 在线 [POST /behavior/user]
-+ Request Record Account/Device online
+
+## 激活 [POST /behavior/active]
 + Parameters
-    + cmd: `online`(string, required) - 客户端指令
-    + args: `{"u_id":"100338","d_id":"28467818"}`(string, optional) - 指令参数
-      （格式为JSON）
-    + client_ret: `ok`(string, optional) - 客户端指令执行结果
+    + active_token: `12312jasiknsnwqiaskdnk`(string, required) - 激活码
 + Response 200 (application/json)
     + Attributes
         + message:`ok` (string) - 响应消息
-## 离开 [POST /behavior/user]
-+ Request Record Account/Device offline
+        
+## 在线 [POST /behavior/online]
 + Parameters
-    + cmd: `offline`(string, required) - 客户端指令
-    + args: `{"u_id":"100338","d_id":"28467818"}`(string, optional) - 指令参数
-      （格式为JSON）
-    + client_ret: `ok`(string, optional) - 客户端指令执行结果
+    + d_id: `28467818`(string, required) - 设备ID
+    + u_id: `100338`(string, optional) - 用户ID
+    + os: `android`(string, optional) - 系统
+    + os_version: `7.1.1`(string, optional) - 系统版本
+    + extra_fields: `{...}`(string, optional) - 其他信息
++ Response 200 (application/json)
+    + Attributes
+        + message:`ok` (string) - 响应消息
+
+## 离开 [POST /behavior/offline]
++ Parameters
+    + d_id: `28467818`(string, required) - 设备ID
+    + u_id: `100338`(string, optional) - 用户ID
 + Response 200 (application/json)
     + Attributes
         + message:`ok` (string) - 响应消息
