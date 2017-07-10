@@ -2,4 +2,35 @@
 
 # 任务 [/task]
 
-## 搜索关键字 [GET]
+## 搜索关键字 [GET /tasks]
++ Parameters
+    + s_token: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 账号会话token
+    + fliter: `today` (string, required) - 过滤关键字组合规则 关键字：日期-> today、3day、7day、workday、weekend;状态->actived、completed、expired;特殊->priority、reminder; 组合规则：&&->且、||-> 或、!-> 非、从左到右、()括号内优先、at标记fliter
+    + search_word: `调研` (string, optional) - 搜索词
+
++ Response 200 (application/json)
+    {
+        "message" : "ok",
+        "search" : "调研 at today && actived && (priority || reminder)"
+        "list" : [
+            {
+                "task_id" : "123",
+                "content" : "完成xxx的调研",
+                "estimated_stime" : "2017-07-10 12:00",
+                "estimated_do" : "2",
+                "estimated_total" : "8",
+                "reminder" : "10",
+                "priority" : "false",
+                "target" : "5.0版本开发",
+                "desc" : "xxx功能包括：1.xxx 2.xxx",
+                "subtask" : [
+                    {
+                        "subtask_id" : "123",
+                        "content":"test"
+                    },
+                    {...}
+                ]
+            },
+            {...}
+        ]
+    }
