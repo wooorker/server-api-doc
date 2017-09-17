@@ -2,13 +2,16 @@
 
 # 社交账号 [/social]
 
-## 登录社交账号 [POST /social]
+## 登录社交账号 [POST /user/social]
 + Parameters
     + social_id: `optm92nakns1nknklin1m=`(string , required) - 社交账号ID
       （来着社交账号唯一的open_id）
     + social_type: `facebook`(enum[string], required) - 社交账号类型
-      （国内支持微信、QQ、微博，国外支持Google、Facebook、Twitter）
+      （国内支持微信:wechat、QQ:qq、微博:weibo，国外支持Google:google、Facebook:facebook、Twitter:twitter）
       + Members
+        + `wechat`
+        + `qq`
+        + `weibo`
         + `facebook`
         + `google`
         + `twitter`
@@ -19,10 +22,11 @@
         + nickname:`yoyoyo` (string) - 昵称
         + avatar:`http://pic.smartdo.io/img/avatar.webp` (string) - 头像
         + role:`vip` - 账号类型
+        + status: `disable` - 账户状态
 
 # 账号 [/user]
 
-## 获得账号信息 [GET /user] 
+## 获得账号信息 [GET /user]
 + Parameters
     + s_token: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 账号会话token
 + Response 200 (application/json)
@@ -48,6 +52,7 @@
         + nickname:`yoyoyo` (string) - 昵称
         + avatar:`http://pic.smartdo.io/img/avatar.webp` (string) - 头像
         + role:`vip` - 账号类型
+        + status: `disable` - 账户状态
 
 ## 更新用户 [PUT /user]
 + Parameters
