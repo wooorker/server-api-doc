@@ -12,3 +12,54 @@ HOST: {{.dev_host}}
 <!-- include(./feed/feed_zh.apib) -->
 <!-- include(./trade/trade_zh.apib) -->
 <!-- include(./sync/sync_zh.apib) -->
+
+
+# Data Structures
+
+## FullMember
++ account_id:75 (number, required) - 账号ID
++ device_id:9fbe13a77e3a2898a71d3e12fe1136fb (string,required)  - 设备ID
++ status:enable,disable (enum, required)  - 状态
++ user (User, required)  - 用户信息
++ session (Session, required)  - 会话信息
++ device (DeviceInfo, required)  - 设备信息
++ platform (Platform) - 第三方登录平台账号信息
+
+## Member
++ account_id:75 (number, required) - 账号ID
++ device_id:9fbe13a77e3a2898a71d3e12fe1136fb (string,required) - 设备ID
++ status:enable,disable (enum, required) - 状态
++ user (User, required) - 用户信息
++ session (Session, required) - 会话信息
+
+## Session
++ access_token: `91c35b269f70ba08e185ce0dcf6acfad` (string, required)  - 会话token
++ expire: 17830481 (number, required)  - 会话失效日期
+
+## Platform 
++ user_id:11787692 (required)  - 用户ID
++ platform_id:oxpBlt5ZftfExKcZa56GRy7n4 (string, required)  - 平台账号ID
++ nick_name:kevinet (string,required)  - 昵称
++ type:google,facebook,wechat,qq,weibo,twitter (enum, required)  - 平台类型
++ avatar:http://avatar.com/1.jpg (string, required)  - 头像
+
+## User 
++ id:11787692 (required)  - 用户ID
++ email:kevinet@smartdo.io (string, required) - 用户邮箱
++ user_name:kevinet (string,required) - 用户名
++ pwd:963a8f3806d800af41d1af8331fd148c (string, required) - 用户密码
++ status:unactivated,enable,disable,deleted (enum, required) - 用户状态
++ info (UserInfo, required) - 用户信息
+
+## UserInfo
++ nick_name:jack (string, required)  - 用户昵称
++ avatar:http://avatar.com/1.jpg (string, required) - 用户头像
++ safe_email:safe@email.com (string, required) - 用户安全邮箱
++ role:normal,vip (enum, required) - 用户类型：普通、VIP
+
+## DeviceInfo
++ device_id: `9fbe13a77e3a2898a71d3e12fe1136fb` (string, required) - 设备ID
++ os: `android` (string, required) - 设备系统名
++ os_version: 7.0 (string, required) - 设备系统版本
++ extra: (string, required) - 其他设备信息JSON格式
++ status:enable,disable,merged,deleted (enum, required) - 设备状态

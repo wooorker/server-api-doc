@@ -1,5 +1,53 @@
 # Group 账号服务
 
+# 账号 [/user]
+
+## 检查邮箱是否可用 [GET /user/check]
++ Parameters
+    + email: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 邮箱
++ Response 200 (application/json)
+    + Attributes 
+        + msg:`ok` (string) - 响应消息
+
+## 获得账号信息 [GET /user]
++ Parameters
+    + s_token: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 账号会话token
++ Response 200 (application/json)
+    + Attributes (FullMember)
+
+## 登录账号 [POST /user]
++ Parameters
+    + email: `you@example.com`(string , required) - 账号邮件
+      （将作为账号唯一的标识）
+    + email: `you@example.com`(string , required) - 账号邮件
+      （将作为账号唯一的标识）
+    + password: `*******`(string, required) - 账号密码
+      （必须包含数字[0-9]和字母[A-Za-z]，长度大于等于8位）
+
++ Response 200 (application/json)
+     + Attributes (Member)
+
+## 更新用户 [PUT /user]
++ Parameters
+    + s_token: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 账号会话token
+    + username: `wanger`(string, optional) - 用户名
+    + email: `you@example.com`(string, optional) - 邮箱
+    + avatar: `https://picture.smartdo.io/avatar/98381623`(string, optional) - 头像
+
++ Response 200 (application/json)
+    + Attributes
+        + msg:`ok` (string) - 响应消息
+
+## 忘记密码 [PUT /user/forgetpwd]
++ Parameters
+    + email: `you@example.com`(string, optional) - 邮箱
+    + code: `*******`(string, optional) - 邮箱验证码
+    + newpassword: `*******`(string, optional) - 新密码（修改密码时，必须填写旧密码）
+
++ Response 200 (application/json)
+    + Attributes
+        + msg:`ok` (string) - 响应消息
+
 # 社交账号 [/social]
 
 ## 登录社交账号 [POST /user/social]
@@ -17,52 +65,4 @@
         + `twitter`
 
 + Response 200 (application/json)
-    + Attributes
-        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - 账号会话token
-        + nickname:`yoyoyo` (string) - 昵称
-        + avatar:`http://pic.smartdo.io/img/avatar.webp` (string) - 头像
-        + role:`vip` - 账号类型
-        + status: `disable` - 账户状态
-
-# 账号 [/user]
-
-## 获得账号信息 [GET /user]
-+ Parameters
-    + s_token: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 账号会话token
-+ Response 200 (application/json)
-    + Attributes
-        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - 账号会话token
-        + nickname:`yoyoyo` (string) - 昵称
-        + avatar:`http://pic.smartdo.io/img/avatar.webp` (string) - 头像
-        + role:`vip` - 账号类型
-        + email:`you@example.com` - 邮箱
-        + device:`{...}` - 设备信息
-        + social:`{...}` - 社交账号信息
-
-## 登录账号 [POST /user]
-+ Parameters
-    + email: `you@example.com`(string , required) - 账号邮件
-      （将作为账号唯一的标识）
-    + password: `*******`(string, required) - 账号密码
-      （必须包含数字[0-9]和字母[A-Za-z]，长度大于等于8位）
-
-+ Response 200 (application/json)
-    + Attributes
-        + s_token:`owenxin2ns123nasdfnqj8dnqoi` (string) - 账号会话token
-        + nickname:`yoyoyo` (string) - 昵称
-        + avatar:`http://pic.smartdo.io/img/avatar.webp` (string) - 头像
-        + role:`vip` - 账号类型
-        + status: `disable` - 账户状态
-
-## 更新用户 [PUT /user]
-+ Parameters
-    + s_token: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 账号会话token
-    + username: `wanger`(string, optional) - 用户名
-    + email: `you@example.com`(string, optional) - 邮箱
-    + password: `*******`(string, optional) - 密码
-    + newpassword: `*******`(string, optional) - 新密码（修改密码时，必须填写旧密码）
-    + avatar: `https://picture.smartdo.io/avatar/98381623`(string, optional) - 头像
-
-+ Response 200 (application/json)
-    + Attributes
-        + msg:`ok` (string) - 响应消息
+    + Attributes (Member)
