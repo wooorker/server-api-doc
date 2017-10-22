@@ -1,7 +1,7 @@
 {
 	"language": "zh",
 	"environment": "dev",
-	"dev_host": "http://test.api.smartdo.io",
+	"dev_host": "http://api.test.smartdo.io",
 	"online_host": "http://api.smartdo.io",
 	"version": "v1.0"
 }

@@ -3,26 +3,23 @@
 
 ## 激活 [POST /behavior/active]
 + Parameters
-    + active_token: `12312jasiknsnwqiaskdnk`(string, required) - 激活码
+    + extra_fields: `{...}`(string, required) - 设备激活信息
 + Response 200 (application/json)
     + Attributes
         + message:`ok` (string) - 响应消息
         
 ## 在线 [POST /behavior/online]
 + Parameters
-    + d_id: `28467818`(string, required) - 设备ID
-    + u_id: `100338`(string, optional) - 用户ID
-    + os: `android`(string, optional) - 系统
-    + os_version: `7.1.1`(string, optional) - 系统版本
-    + extra_fields: `{...}`(string, optional) - 其他信息
+    + did: `9fbe13a77e3a2898a71d3e12fe1136fb`(string, required) - 设备ID
+    + account_id: `84`(string, optional) - 账号ID
 + Response 200 (application/json)
     + Attributes
         + message:`ok` (string) - 响应消息
 
 ## 离开 [POST /behavior/offline]
 + Parameters
-    + d_id: `28467818`(string, required) - 设备ID
-    + u_id: `100338`(string, optional) - 用户ID
+    + did: `9fbe13a77e3a2898a71d3e12fe1136fb`(string, required) - 设备ID
+    + account_id: `84`(string, optional) - 账号ID
 + Response 200 (application/json)
     + Attributes
         + message:`ok` (string) - 响应消息
