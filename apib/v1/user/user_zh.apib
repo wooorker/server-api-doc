@@ -4,7 +4,14 @@
 
 ## 检查邮箱是否可用 [GET /user/check]
 + Parameters
-    + email: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 邮箱
+    + email: `kevinet@smartdo.io`(string , required) - 邮箱
++ Response 200 (application/json)
+    + Attributes 
+        + msg:`ok` (string) - 响应消息
+
+## 发送验证码到指定邮箱 [POST /user/post/code]
++ Parameters
+    + email: `kevinet@smartdo.io`(string , required) - 目标邮箱
 + Response 200 (application/json)
     + Attributes 
         + msg:`ok` (string) - 响应消息
