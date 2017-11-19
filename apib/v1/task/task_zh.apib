@@ -121,6 +121,8 @@
             "plan_date_at":1505632197,
             "clock":"open",
             "clock_time":1505639876,
+            "sub_task_total": 5,
+            "sub_task_complete": 2,
             "level":"0",
             "status":"0",
             "sub_task_list": [
@@ -197,6 +199,20 @@
     + Attributes
         + sub_task_id:`28` (number) - 子任务ID
 
+## 更新子任务 [PUT /task/sub]
++ Parameters
+    + s_token: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 账号会话token
+    + sub_task_id: `201301` (number, required) - 子任务ID
+    + chief_task_id: `201301` (number, required) - 父任务ID
+    + content: `第一步完成xxx的调研`(string, required) - 子任务内容
+    + plan_time: `1505632197` (number, required) - 预估开计划开始时间 单位：秒级时间戳
+    + clock: `open` (enum) - 闹钟状态 open:设置 close:不设置 默认:close
+    + clock_time: `1506223769` (number) - 闹钟时间 单位:秒级时间戳
+
++ Response 200 (application/json)
+    + Attributes
+        + affect_row_num:`1` (number) - 更新成功数量
+
 ## 删除子任务 [DELETE /task/sub]
 + Parameters
     + s_token: `owenxin2ns123nasdfnqj8dnqoi`(string , required) - 账号会话token
@@ -205,4 +221,4 @@
     
 + Response 200 (application/json)
     + Attributes
-        + sub_task_id:`28` (number) - 子任务IDc
+        + sub_task_id:`28` (number) - 子任务ID
