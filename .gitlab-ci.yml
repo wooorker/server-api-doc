@@ -1,0 +1,7 @@
+before_script:
+- openssl aes-256-cbc -K $encrypted_9828b90b0055_key -iv $encrypted_9828b90b0055_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- echo -e "Host 111.231.203.209\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+script:
+- ssh ubuntu@111.231.203.209 'cd /mnt/www/server-api-doc && ./deploy.sh'
